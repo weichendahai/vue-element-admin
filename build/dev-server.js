@@ -42,14 +42,20 @@ compiler.plugin('compilation', function (compilation) {
 
 // compiler.apply(new DashboardPlugin());
 
+//此处 存在 代理bug 已经修改
 // proxy api requests
-Object.keys(proxyTable).forEach(function (context) {
-    var options = proxyTable[context]
-    if (typeof options === 'string') {
-        options = {target: options}
-    }
-    app.use(proxyMiddleware(options.filter || context, options))
-});
+// Object.keys(proxyTable).forEach(function (context) {
+//     var options = proxyTable[context]
+//     if (typeof options === 'string') {
+//         options = {target: options}
+//     }
+//     app.use(proxyMiddleware(options.filter || context, options))
+// });
+//此处 存在 代理bug 已经修改
+app.use('/api', proxyMiddleware({target: "http://localhost:8080", changeOrigin: true}));
+
+ // app.use(proxyMiddleware('/api*', {target: "http://localhost:8080", changeOrigin:true, pathRewrite: {'^/api': 'api'}}));
+ // app.use(proxyMiddleware('/api/user/list', {target: "http://localhost:8080", changeOrigin:true}));
 
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')());

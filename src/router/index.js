@@ -60,6 +60,8 @@ const Form1 = resolve => require(['../views/example/form1'], resolve);
 /* permission */
 const Permission = resolve => require(['../views/permission/index'], resolve);
 
+/* MyUser */
+const User = resolve => require(['../views/user/index'], resolve);
 
 Vue.use(Router);
 
@@ -184,6 +186,15 @@ export const asyncRouterMap = [
     icon: 'theme',
     noDropdown: true,
     children: [{ path: 'index', component: Theme, name: '换肤' }]
+  },
+  {
+    path: '/user',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'user',
+    icon: 'theme',
+    noDropdown: true,
+    children: [{ path: 'index', component: User, name: '用户用户' }]
   },
   {
     path: '/example',
