@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { Message } from 'element-ui';
 import store from '../store';
+
+import qs from 'qs';
 // import router from '../router';
+
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 
 // 创建axios实例
 const service = axios.create({
@@ -11,6 +15,12 @@ const service = axios.create({
 
 // request拦截器
 service.interceptors.request.use(config => {
+
+  //增加此处特殊处理；方可ok
+  if(config.method  === 'post'){
+    config.data = qs.stringify(config.data);
+  }
+
   // Do something before request is sent
   if (store.getters.token) {
     config.headers['X-Token'] = store.getters.token; // 让每个请求携带token--['X-Token']为自定义key 请根据实际情况自行修改

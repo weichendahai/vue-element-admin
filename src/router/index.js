@@ -62,6 +62,7 @@ const Permission = resolve => require(['../views/permission/index'], resolve);
 
 /* MyUser */
 const User = resolve => require(['../views/user/index'], resolve);
+const UserAdd = resolve => require(['../views/user/add'], resolve);
 
 Vue.use(Router);
 
@@ -193,8 +194,10 @@ export const asyncRouterMap = [
     redirect: 'noredirect',
     name: 'user',
     icon: 'theme',
-    noDropdown: true,
-    children: [{ path: 'index', component: User, name: '用户用户' }]
+    children: [
+      { path: 'index', component: User, name: '用户用户' },
+      { path: 'add', component: UserAdd, name: '编辑用户' },
+    ]
   },
   {
     path: '/example',
