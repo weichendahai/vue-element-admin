@@ -2,30 +2,30 @@ import fetch from 'utils/fetch';
 
 export function fetchList() {
   return fetch({
-    url: '/api/user/list',
+    url: '/api/permission/list',
     method: 'get'
   });
 }
 
-export function insertUser(data) {
+export function insert(data) {
   return fetch({
-    url: '/api/user/insert',
+    url: '/api/permission/insert',
     method: 'post',
     data,
   });
 }
 
-export function deleteUser(data) {
+export function deleteP(data) {
   return fetch({
-    url: '/api/user/delete',
+    url: '/api/permission/delete',
     method: 'post',
     data,
   });
 }
 
-export function updateUser(data) {
+export function update(data) {
   return fetch({
-    url: '/api/user/update',
+    url: '/api/permission/update',
     method: 'post',
     data,
     // headers: {

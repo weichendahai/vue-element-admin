@@ -58,11 +58,13 @@ const InlineEditTable = resolve => require(['../views/example/inlineEditTable'],
 const Form1 = resolve => require(['../views/example/form1'], resolve);
 
 /* permission */
-const Permission = resolve => require(['../views/permission/index'], resolve);
+const Permission2 = resolve => require(['../views/permission2/index'], resolve);
 
 /* MyUser */
 const User = resolve => require(['../views/user/index'], resolve);
 const UserAdd = resolve => require(['../views/user/add'], resolve);
+const Role = resolve => require(['../views/role/index'], resolve);
+const Permission = resolve => require(['../views/permission/index'], resolve);
 
 Vue.use(Router);
 
@@ -107,14 +109,14 @@ export default new Router({
 
 export const asyncRouterMap = [
   {
-    path: '/permission',
+    path: '/permission2',
     component: Layout,
-    redirect: '/permission/index',
+    redirect: '/permission2/index',
     name: '权限测试',
     icon: 'quanxian',
     meta: { role: ['admin'] },
     noDropdown: true,
-    children: [{ path: 'index', component: Permission, name: '权限测试页', meta: { role: ['admin'] } }]
+    children: [{ path: 'index', component: Permission2, name: '权限测试页', meta: { role: ['admin'] } }]
   },
   {
     path: '/components',
@@ -197,6 +199,28 @@ export const asyncRouterMap = [
     children: [
       { path: 'index', component: User, name: '用户用户' },
       { path: 'add', component: UserAdd, name: '编辑用户' },
+    ]
+  },
+  {
+    path: '/role',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '角色管理',
+    icon: 'theme',
+    noDropdown: true,
+    children: [
+      { path: 'index', component: Role, name: '角色管理' },
+    ]
+  },
+  {
+    path: '/permission',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '权限管理',
+    icon: 'theme',
+    noDropdown: true,
+    children: [
+      { path: 'index', component: Permission, name: '权限管理' },
     ]
   },
   {

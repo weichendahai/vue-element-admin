@@ -2,30 +2,30 @@ import fetch from 'utils/fetch';
 
 export function fetchList() {
   return fetch({
-    url: '/api/user/list',
+    url: '/api/role/list',
     method: 'get'
   });
 }
 
-export function insertUser(data) {
+export function insertRole(data) {
   return fetch({
-    url: '/api/user/insert',
+    url: '/api/role/insert',
     method: 'post',
     data,
   });
 }
 
-export function deleteUser(data) {
+export function deleteRole(data) {
   return fetch({
-    url: '/api/user/delete',
+    url: '/api/role/delete',
     method: 'post',
     data,
   });
 }
 
-export function updateUser(data) {
+export function updateRole(data) {
   return fetch({
-    url: '/api/user/update',
+    url: '/api/role/update',
     method: 'post',
     data,
     // headers: {
